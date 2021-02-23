@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+/*TOP BAR*/
+#top-bar {
+    height: 50px;
+    background-color: #219ebc;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#left-btns, #right-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#left-btns button, #right-btns button {
+    color: #ffffff;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#menu-btn {
+    margin-right: 20px;
+}
+
+#search-bar {
+    background-color: #8ecae6;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#search-bar input {
+    font-size: 14px;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#search-bar input::placeholder {
+    color: #ffffff;
+}
+
+#search-btn {
+    margin-right: 5px;
+}
+
+#user-div {
+    border: 2px solid #8ecae6;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-left: 20px;
+    padding: 13px;
+    color: #8ecae6;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*FULL CONTENT*/
+#full-content {
+    display: flex;
+
+}
+
+/*LEFT BAR*/
+
+#left-bar {
+    width: 290px;
+    height: calc(100vh - 50px);
+    background-color: #f3f3f3;
+    padding: 40px 5px 40px 40px;
+    /*flex: 0 0 290px;*/
+    transition: all 0.5s;
+    position: fixed;
+    top: 50px;
+}
+
+.left-bar-open {
+    left: 0;
+}
+
+.left-bar-closed {
+    left: -290px;
+}
+
+#left-bar div {
+    padding: 8px;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+#left-bar a {
+    text-decoration: none;
+}
+
+#left-bar a div {
+    border-radius: 5px;
+}
+
+#left-bar a div:hover {
+    background-color: #ffffff;
+}
+
+/*Add project form*/
+#project-title {
+    font-weight: 600;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#add-new-project-btn {
+    background: none;
+    padding: 8px;
+    border: none;
+    outline: none;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#add-new-project-btn:hover, #new-project-form button:hover {
+    color: #219ebc;
+}
+
+#projects-div {
+    margin-left: -8px;
+}
+
+#new-project-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#new-project-form input {
+    background-color: #ffffff;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+#new-project-form button {
+    background: none;
+    padding: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #023047;
+    font-size: 16px;
+}
+
+/*ADD TASK FORM*/
+#page-background {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 90px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /*Position*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*Flex*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#form-popup {
+    width: 550px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    /*Flex*/
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#form-header {
+    /*Flex*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#form-header h2 {
+    color: #219ebc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#close-btn {
+    background: none;
+    border: none;
+    color: #219ebc;
+    font-size: 16px;
+    /*Button*/
+    outline: none;
+    cursor: pointer;
+    /*Transition*/
+    transition: all 0.3s;
+}
+
+#close-btn:hover {
+    color: #023047;
+}
+
+#form-popup form {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    /*Flex*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#form-popup form input, #form-popup form select {
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    outline: none;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+#form-popup form #title {
+    background-color: #ffffff;
+    border: none;
+    grid-column: 1/4;
+    font-size: 14px;
+}
+
+#submit-task-btn, #submit-edit-btn {
+    width: 100%;
+    padding: 5px;
+    background-color: #219ebc;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    /*Button*/
+    outline: none;
+    cursor: pointer;
+    /*Transition*/
+    transition: all 0.3s;
+}
+
+#submit-task-btn:hover, #submit-edit-btn:hover {
+    background-color: #023047;
+}
+
+/*TASKS*/
+#main-content {
+    padding: 40px 160px;
+    margin-left: 290px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0;
+    flex: 1 1 100%;
+    transition: all 0.5s;
+}
+
+.all-tasks-div {
+    border-top: 1px solid #e0e0e0;
+}
+
+.task-div {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    /*Flex*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-div button {
+    color: #023047;
+    font-size: 16px;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.task-left, .task-right {
+    /*Flex*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}

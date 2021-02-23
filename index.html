@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div id="top-bar">
+        <div id="left-btns">
+            <button id="menu-btn" type="button"><i class="fas fa-bars"></i></button>
+            <div id="search-bar">
+                <button id="search-btn" type="button"><i class="fas fa-search"></i></i></button>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div id="right-btns">
+            <button id="open-task-form-btn" type="button"><i class="fas fa-plus"></i></button>
+            <div id="user-div"><i class="fas fa-user"></i></div>
+        </div>
+    </div>
+
+    <div id="full-content">
+        <div id="left-bar"  class="left-bar-open">
+            <a id="inbox-link" href=#><div><i class="fas fa-inbox"></i> &nbsp; Inbox</div></a>
+            <a id="today-link" href=#><div><i class="fas fa-calendar-day"></i> &nbsp; Today</div></a>
+            <a id="next-days-link" href=#><div><i class="fas fa-calendar-week"></i> &nbsp; Next Days</div></a>
+            <div id="project-title"><i class="fas fa-chevron-down"></i></i> &nbsp; Projects</div>
+            <div id="projects-div"></div>
+            <button id="add-new-project-btn" type="button"><i class="fas fa-plus"></i> &nbsp; New Project</button>
+        </div>
+    
+        <div id="main-content"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
