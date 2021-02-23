@@ -18,5 +18,8 @@
   "homepage": "https://github.com/fernanda-veiga/to-do-list-app#readme",
   "devDependencies": {
     "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "date-fns": "^2.17.0"
   }
 }

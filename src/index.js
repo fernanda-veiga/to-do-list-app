@@ -1,5 +1,6 @@
 import {addEventToMenuBtn, addEventToAddTaskBtn} from './main-buttons-events'
 import {checkIfThereIsLocalStorage, updateLocalStorage} from './local-storage'
+import {showTasksOnScreen} from './show-tasks-dom'
 
 //Factory function to create a new task object
 function addNewTask (title, dueDate, project = 'Inbox', priority) {
@@ -10,6 +11,7 @@ function addNewTask (title, dueDate, project = 'Inbox', priority) {
 //Initialize the page
 let allTasks = [];
 allTasks = checkIfThereIsLocalStorage(allTasks);
+showTasksOnScreen(allTasks);
 
 //Functions that update the allTasks array
 function submitNewTask() {
@@ -21,6 +23,7 @@ function submitNewTask() {
     let newTask = addNewTask(taskTitle, taskDueDate, /*taskProject*/ 'Inbox', taskPriority);
         
     allTasks.push(newTask);
+    showTasksOnScreen(allTasks);
     console.log(allTasks)
 }
 

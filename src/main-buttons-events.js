@@ -21,7 +21,6 @@ function addEventToFormBtns() {
     closeTaskFormBtn.addEventListener('click', closeAddTaskForm);
     submitTaskFormBtn.addEventListener('click', () => {
         submitNewTask();
-        //showTasksOnScreen(allTasks);
         closeAddTaskForm();
     });
 }
