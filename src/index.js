@@ -1,4 +1,4 @@
-import {addEventToMenuBtn} from './main-buttons-events'
+import {addEventToMenuBtn, addEventToAddTaskBtn} from './main-buttons-events'
 
 //Factory function to create a new task object
 function addNewTask (title, dueDate, project = 'Inbox', priority) {
@@ -8,3 +8,6 @@ function addNewTask (title, dueDate, project = 'Inbox', priority) {
 
 //Add event listener to menu button
 addEventToMenuBtn();
+
+//Add event listener to add task button
+addEventToAddTaskBtn();
