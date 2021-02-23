@@ -1,4 +1,6 @@
-import {isBefore, isToday} from "date-fns"
+import {isBefore, isToday} from 'date-fns'
+import {addEventToTaskBtns} from './show-tasks-events'
+import {generatePageBackground, generateFormPopup, generateFormHeader, generateFormInputFields, generateFormSubmitButton} from './main-buttons-dom'
 
 function showTasksOnScreen(allTasks) {
     const mainContent = document.querySelector("#main-content");
@@ -53,7 +55,7 @@ function showTasksOnScreen(allTasks) {
     });
     showColorByDueDate();
     showColorByPriority(allTasks);
-    //addEventToTaskBtns(allTasks);
+    addEventToTaskBtns(allTasks);
 }
 
 function showColorByDueDate() {
@@ -90,4 +92,20 @@ function showColorByPriority(allTasks) {
     })
 }
 
-export {showTasksOnScreen}
+function generateFormToEditTask(titleValue, dueDateValue, projectValue, priorityValue) {
+    let body = document.querySelector("body");
+    let pageBackground = generatePageBackground();
+    let formPopup = generateFormPopup();
+    let formHeader = generateFormHeader("Edit Task");
+    let formContent = generateFormInputFields(titleValue, dueDateValue, projectValue, priorityValue);
+    let formSubmitBtn = generateFormSubmitButton("submit-edit-btn", "Edit Task");
+
+    formPopup.appendChild(formHeader);
+    formPopup.appendChild(formContent);
+    formPopup.appendChild(formSubmitBtn);
+
+    pageBackground.appendChild(formPopup);
+    body.appendChild(pageBackground);
+}
+
+export {showTasksOnScreen, generateFormToEditTask}

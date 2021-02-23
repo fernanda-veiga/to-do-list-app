@@ -127,4 +127,4 @@ function generateFormSubmitButton(buttonId, buttonText) {
 }
 
 
-export {openOrCloseLeftBar, generateFormToAddNewTask}
+export {openOrCloseLeftBar, generateFormToAddNewTask, generatePageBackground, generateFormPopup, generateFormHeader, generateFormInputFields, generateFormSubmitButton}

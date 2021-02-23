@@ -24,7 +24,23 @@ function submitNewTask() {
         
     allTasks.push(newTask);
     showTasksOnScreen(allTasks);
-    console.log(allTasks)
+    updateLocalStorage(allTasks);
+}
+
+function deleteTask(index) {
+    allTasks.splice(index, 1);
+    showTasksOnScreen(allTasks);
+    updateLocalStorage(allTasks);
+}
+
+function submitNewEdit(index) {
+    console.log("test")
+    allTasks[index].title = document.querySelector("#title").value;
+    allTasks[index].dueDate = document.querySelector("#due-date").value;
+    //allTasks[index].project = document.querySelector("#project").value;
+    allTasks[index].priority = document.querySelector("#priority").value;
+    showTasksOnScreen(allTasks);
+    updateLocalStorage(allTasks);
 }
 
 
@@ -34,4 +50,4 @@ addEventToMenuBtn();
 //Add event listener to add task button
 addEventToAddTaskBtn();
 
-export {submitNewTask}
+export {submitNewTask, submitNewEdit, deleteTask}

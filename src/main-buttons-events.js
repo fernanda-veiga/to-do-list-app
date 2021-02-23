@@ -31,7 +31,7 @@ function closeAddTaskForm() {
     body.removeChild(form);
 }
 
-export {addEventToMenuBtn, addEventToAddTaskBtn}
+export {addEventToMenuBtn, addEventToAddTaskBtn, closeAddTaskForm}
 
 
 
