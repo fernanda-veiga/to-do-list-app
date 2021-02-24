@@ -1,6 +1,7 @@
 import {addEventToMenuBtn, addEventToAddTaskBtn} from './main-buttons-events'
 import {checkIfThereIsLocalStorage, updateLocalStorage} from './local-storage'
 import {showTasksOnScreen} from './show-tasks-dom'
+import {isBefore, isToday} from 'date-fns'
 
 //Factory function to create a new task object
 function addNewTask (title, dueDate, project = 'Inbox', priority) {
@@ -23,6 +24,9 @@ function submitNewTask() {
     let newTask = addNewTask(taskTitle, taskDueDate, /*taskProject*/ 'Inbox', taskPriority);
         
     allTasks.push(newTask);
+    allTasks = sortAllTasks(allTasks);
+    console.log('bye')
+    console.log(allTasks)
     showTasksOnScreen(allTasks);
     updateLocalStorage(allTasks);
 }
@@ -41,6 +45,17 @@ function submitNewEdit(index) {
     allTasks[index].priority = document.querySelector("#priority").value;
     showTasksOnScreen(allTasks);
     updateLocalStorage(allTasks);
+}
+
+function sortAllTasks(allTasks) {
+    console.log('hi')
+    console.log(allTasks.dueDate)
+    let sortedTasks = allTasks.sort((a, b) => {
+        if (a.dueDate < b.dueDate) {return -1;}
+        else {return 1;}
+    })
+    console.log(sortedTasks);
+    return sortedTasks;
 }
 
 
