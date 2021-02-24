@@ -322,3 +322,37 @@ body {
     align-items: center;
     gap: 15px;
 }
+
+.task-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#form-popup #task-content {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 10px;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    /*Flex*/
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#form-popup #task-content div {
+    padding: 5px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    color: #023047;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+#form-popup #task-content #task-content-title {
+    background-color: #ffffff;
+    border: none;
+    grid-column: 1/4;
+    font-size: 14px;
+}
