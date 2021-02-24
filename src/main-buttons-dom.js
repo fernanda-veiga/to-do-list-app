@@ -66,7 +66,7 @@ function generateFormHeader(title) {
     return formHeader;
 }
 
-function generateFormInputFields(titleValue = '', dueDateValue = new Date(), projectValue = 'Inbox', priorityValue = 'high') {
+function generateFormInputFields(titleValue = '', dueDateValue = new Date(), projectValue = 'Inbox', priorityValue = '') {
     let formContent = document.createElement('form');
 
     //Task Title
@@ -96,7 +96,7 @@ function generateFormInputFields(titleValue = '', dueDateValue = new Date(), pro
     taskPrioritySelect.setAttribute('id', 'priority');
     taskPrioritySelect.setAttribute('name', 'priority');
 
-    let priorityTitle = '<option value="" disabled selected hidden>Priority</option>';
+    let priorityTitle = '<option value="" disabled selected>Priority</option>';
     let priorityOptionHigh = '<option value="high">High</option>';
     let priorityOptionMedium = '<option value="medium">Medium</option>';
     let priorityOptionLow = '<option value="low">Low</option>';

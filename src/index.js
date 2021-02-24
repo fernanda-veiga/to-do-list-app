@@ -24,9 +24,7 @@ function submitNewTask() {
     let newTask = addNewTask(taskTitle, taskDueDate, /*taskProject*/ 'Inbox', taskPriority);
         
     allTasks.push(newTask);
-    allTasks = sortAllTasks(allTasks);
-    console.log('bye')
-    console.log(allTasks)
+    allTasks = sortAllTasksByDueDate(allTasks)
     showTasksOnScreen(allTasks);
     updateLocalStorage(allTasks);
 }
@@ -47,14 +45,11 @@ function submitNewEdit(index) {
     updateLocalStorage(allTasks);
 }
 
-function sortAllTasks(allTasks) {
-    console.log('hi')
-    console.log(allTasks.dueDate)
+function sortAllTasksByDueDate(allTasks) {
     let sortedTasks = allTasks.sort((a, b) => {
         if (a.dueDate < b.dueDate) {return -1;}
         else {return 1;}
     })
-    console.log(sortedTasks);
     return sortedTasks;
 }
 
