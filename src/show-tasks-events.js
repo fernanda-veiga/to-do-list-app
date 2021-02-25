@@ -65,7 +65,7 @@ function addEventToEditFormBtns(index) {
 
 function addEventToTaskDiv(task, allTasks) {
     let taskTitle = task.querySelector('.task-title');
-    let index = Number(task.id.replace("task", ""));
+    let index = Number(task.id.replace('task', ''));
 
     taskTitle.addEventListener('click', () =>  {
         console.log(allTasks[index])

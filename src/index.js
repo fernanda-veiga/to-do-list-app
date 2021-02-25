@@ -12,7 +12,14 @@ function addNewTask (title, dueDate, project = 'Inbox', priority) {
 //Initialize the page
 let allTasks = [];
 allTasks = checkIfThereIsLocalStorage(allTasks);
-showTasksOnScreen(allTasks);
+showTasksAndUpdateStorage();
+
+
+function showTasksAndUpdateStorage() {
+    showTasksOnScreen(allTasks);
+    updateLocalStorage(allTasks);
+    return;
+}
 
 //Functions that update the allTasks array
 function submitNewTask() {
@@ -25,14 +32,12 @@ function submitNewTask() {
         
     allTasks.push(newTask);
     allTasks = sortAllTasksByDueDate(allTasks)
-    showTasksOnScreen(allTasks);
-    updateLocalStorage(allTasks);
+    showTasksAndUpdateStorage();
 }
 
 function deleteTask(index) {
     allTasks.splice(index, 1);
-    showTasksOnScreen(allTasks);
-    updateLocalStorage(allTasks);
+    showTasksAndUpdateStorage();
 }
 
 function submitNewEdit(index) {
@@ -41,8 +46,8 @@ function submitNewEdit(index) {
     allTasks[index].dueDate = document.querySelector("#due-date").value;
     //allTasks[index].project = document.querySelector("#project").value;
     allTasks[index].priority = document.querySelector("#priority").value;
-    showTasksOnScreen(allTasks);
-    updateLocalStorage(allTasks);
+    allTasks = sortAllTasksByDueDate(allTasks)
+    showTasksAndUpdateStorage();
 }
 
 function sortAllTasksByDueDate(allTasks) {
@@ -60,4 +65,4 @@ addEventToMenuBtn();
 //Add event listener to add task button
 addEventToAddTaskBtn();
 
-export {submitNewTask, submitNewEdit, deleteTask}
+export {submitNewTask, submitNewEdit, deleteTask, showTasksAndUpdateStorage}

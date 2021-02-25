@@ -1,6 +1,7 @@
 import {isBefore, isToday} from 'date-fns'
 import {addEventToTaskBtns} from './show-tasks-events'
 import {generatePageBackground, generateFormPopup, generateFormHeader, generateFormInputFields, generateFormSubmitButton} from './main-buttons-dom'
+import {applyFilter} from './filters'
 
 function showTasksOnScreen(allTasks) {
     const mainContent = document.querySelector("#main-content");
@@ -10,8 +11,6 @@ function showTasksOnScreen(allTasks) {
     
     let allTasksDiv = document.createElement("div");
     allTasksDiv.classList.add("all-tasks-div");
-    console.log(allTasksDiv)
-    console.log(allTasks)
     allTasks.forEach(item => {
         let taskDiv = document.createElement("div");
         taskDiv.id = `task${allTasks.indexOf(item)}`;
@@ -53,9 +52,40 @@ function showTasksOnScreen(allTasks) {
         allTasksDiv.appendChild(taskDiv);
         mainContent.appendChild(allTasksDiv);
     });
+
     showColorByDueDate();
     showColorByPriority(allTasks);
     addEventToTaskBtns(allTasks);
+
+    //Filters the allTasks array
+    let allTasksFilteredIndexes = applyFilter(allTasks);
+    console.log('showtasks')
+    console.log(allTasksFilteredIndexes)
+
+    let allTasksShown = Array.from(allTasksDiv.childNodes)
+    console.log(allTasksShown)
+
+    allTasksShown.forEach(task => {
+        let taskIndex = allTasksShown.indexOf(task);
+        console.log(taskIndex)
+        if (allTasksFilteredIndexes.some(index => index === taskIndex) === false) {
+            allTasksDiv.removeChild(task)
+        }
+        //allTasksFilteredIndexes.forEach(index => {
+            //console.log(taskIndex)
+            //console.log(index)
+            //if (taskIndex === index) {
+                //console.log('yes')
+                //allTasksDiv.removeChild(task)
+            //}
+        //})
+        //console.log(allTasksFilteredIndexes.findIndex(allTasksShown.indexOf(task)))
+        //if (allTasksFilteredIndexes.find(allTasksShown.indexOf(task)) === -1) {
+            //allTasksDiv.removeChild(task);
+        //}
+
+    })
+    
 }
 
 function showColorByDueDate() {
