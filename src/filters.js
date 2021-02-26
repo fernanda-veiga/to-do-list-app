@@ -1,28 +1,40 @@
 import {format, differenceInCalendarDays, compareAsc} from 'date-fns'
 import {showTasksAndProjectsAndUpdateStorage} from './index'
 
-let lastFilter = 'Inbox';
+let lastFilter = 'AllTasks';
 
-const inboxFilter = document.querySelector("#inbox-link");
-inboxFilter.addEventListener("click", () => {
-    lastFilter = 'Inbox';
-    showButtonWhenClicked(inboxFilter);
-    showTasksAndProjectsAndUpdateStorage();
-})
+function addEventToFilterBtns() {
+    const allTasksFilter = document.querySelector("#all-tasks-link");
+    allTasksFilter.addEventListener("click", () => {
+        lastFilter = 'AllTasks';
+        showButtonWhenClicked(allTasksFilter);
+        showTasksAndProjectsAndUpdateStorage();
+    })
 
-const todayFilter = document.querySelector("#today-link");
-todayFilter.addEventListener("click", () => {
-    lastFilter = 'Today'
-    showButtonWhenClicked(todayFilter);
-    showTasksAndProjectsAndUpdateStorage();
-})
+    const todayFilter = document.querySelector("#today-link");
+    todayFilter.addEventListener("click", () => {
+        lastFilter = 'Today'
+        showButtonWhenClicked(todayFilter);
+        showTasksAndProjectsAndUpdateStorage();
+    })
 
-const nextDaysFilter = document.querySelector("#next-days-link");
-nextDaysFilter.addEventListener("click", () => {
-    lastFilter = 'NextDays'
-    showButtonWhenClicked(nextDaysFilter);
-    showTasksAndProjectsAndUpdateStorage();
-})
+    const nextDaysFilter = document.querySelector("#next-days-link");
+    nextDaysFilter.addEventListener("click", () => {
+        lastFilter = 'NextDays'
+        showButtonWhenClicked(nextDaysFilter);
+        showTasksAndProjectsAndUpdateStorage();
+    })
+
+    const allProjectBtns = document.querySelectorAll('.project-btn');
+    allProjectBtns.forEach(button => {
+        button.addEventListener('click', () => {
+            lastFilter = `${button.id.replace('project-', '')}`;
+            console.log(lastFilter)
+            showButtonWhenClicked(button);
+            showTasksAndProjectsAndUpdateStorage();
+        })
+    })
+}
 
 function showButtonWhenClicked(button) {
     let lastFilterClicked = document.querySelector('.div-open');
@@ -37,14 +49,11 @@ function showButtonWhenClicked(button) {
 function applyFilter(allTasks) {
     let allTasksFilteredIndexes = [];
 
-    if (lastFilter === 'Inbox') {
+    if (lastFilter === 'AllTasks') {
         allTasks.forEach((task) => {
-            if (task.project === 'Inbox') {
-                allTasksFilteredIndexes.push(allTasks.indexOf(task));
-            }
+            allTasksFilteredIndexes.push(allTasks.indexOf(task));
         })
     }
-
     else if (lastFilter === 'Today') {
         let todaysDate = format(new Date(), "yyyy-MM-dd");
         allTasks.forEach((task) => {
@@ -63,10 +72,20 @@ function applyFilter(allTasks) {
             }
         })
     }
+    else {
+        console.log(lastFilter);
+        allTasks.forEach((task) => {
+            console.log(task.project)
+            if (task.project === lastFilter) {
+                allTasksFilteredIndexes.push(allTasks.indexOf(task));
+            }
+        })
+    }
+
     return allTasksFilteredIndexes;
 }
 
-export {applyFilter}
+export {applyFilter, addEventToFilterBtns}
 
 
 

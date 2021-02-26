@@ -1,9 +1,9 @@
 import {addEventToMenuBtn, addEventToAddTaskBtn} from './main-buttons-events'
 import {checkIfThereIsLocalStorageOnTasks, checkIfThereIsLocalStorageOnProjects, updateLocalStorage} from './local-storage'
 import {showTasksOnScreen} from './show-tasks-dom'
-import {isBefore, isToday} from 'date-fns'
 import {addEventToAddNewProjectBtn} from './projects-events'
 import {showProjectsOnScreen} from './projects-dom'
+import {addEventToFilterBtns} from './filters'
 
 //Factory function to create a new task object
 function addNewTask (title, dueDate, project = 'Inbox', priority) {
@@ -16,24 +16,32 @@ let allTasks = [];
 let allProjects = ['Inbox'];
 allTasks = checkIfThereIsLocalStorageOnTasks(allTasks);
 allProjects = checkIfThereIsLocalStorageOnProjects(allProjects);
-showTasksAndProjectsAndUpdateStorage();
+showTasksAndProjectsAndUpdateStorage()
+showProjectsOnScreen(allProjects)
 
 
 function showTasksAndProjectsAndUpdateStorage() {
+    console.log('bye')
     showTasksOnScreen(allTasks);
-    showProjectsOnScreen(allProjects);
+    //showProjectsOnScreen(allProjects);
     updateLocalStorage(allTasks, allProjects);
     return;
 }
+
+/*function showOnlyTasks() {
+    showTasksOnScreen(allTasks);
+    updateLocalStorage(allTasks, allProjects);
+    return;
+}*/
 
 //Functions that update the allTasks array
 function submitNewTask() {
     const taskTitle = document.querySelector('#title').value;
     const taskDueDate = document.querySelector('#due-date').value;
-    //const taskProject = document.querySelector('#project').value;
+    const taskProject = document.querySelector('#project').value;
     const taskPriority = document.querySelector('#priority').value;
     
-    let newTask = addNewTask(taskTitle, taskDueDate, /*taskProject*/ 'Inbox', taskPriority);
+    let newTask = addNewTask(taskTitle, taskDueDate, taskProject, taskPriority);
         
     allTasks.push(newTask);
     allTasks = sortAllTasksByDueDate(allTasks)
@@ -46,10 +54,9 @@ function deleteTask(index) {
 }
 
 function submitNewEdit(index) {
-    console.log("test")
     allTasks[index].title = document.querySelector("#title").value;
     allTasks[index].dueDate = document.querySelector("#due-date").value;
-    //allTasks[index].project = document.querySelector("#project").value;
+    allTasks[index].project = document.querySelector("#project").value;
     allTasks[index].priority = document.querySelector("#priority").value;
     allTasks = sortAllTasksByDueDate(allTasks)
     showTasksAndProjectsAndUpdateStorage();
@@ -67,10 +74,9 @@ function sortAllTasksByDueDate(allTasks) {
 function submitNewProject() {
     const newProjectForm = document.querySelector("#new-project-form");
     let newProjectInput = newProjectForm.querySelector("input");
-    console.log('test')
 
     allProjects.push(newProjectInput.value);
-    console.log(allProjects)
+    showProjectsOnScreen(allProjects)
     showTasksAndProjectsAndUpdateStorage()
 }
 
@@ -100,5 +106,7 @@ addEventToAddTaskBtn();
 //Add event listener to add new project button
 addEventToAddNewProjectBtn();
 
+//Add event listener to filter buttons
+addEventToFilterBtns();
 
 export {submitNewTask, submitNewEdit, deleteTask, showTasksAndProjectsAndUpdateStorage, submitNewProject, generateProjectSelect}

@@ -58,10 +58,9 @@ function showTasksOnScreen(allTasks) {
     addEventToTaskBtns(allTasks);
 
     //Filters the allTasks array
+    console.log('hi')
     let allTasksFilteredIndexes = applyFilter(allTasks);
-    console.log('showtasks')
     console.log(allTasksFilteredIndexes)
-
     let allTasksShown = Array.from(allTasksDiv.childNodes)
     console.log(allTasksShown)
 

@@ -30,8 +30,6 @@ function generateFormToAddNewTask() {
 
     pageBackground.appendChild(formPopup);
     body.appendChild(pageBackground);
-
-    //addEventToFormBtns()
 }
 
 function generatePageBackground() {

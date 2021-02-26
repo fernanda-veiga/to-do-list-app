@@ -31,18 +31,12 @@ function addEventToSubmitProjectBtn() {
     const newProjectForm = document.querySelector("#new-project-form");
     const submitNewProjectBtn = newProjectForm.querySelector("button");
 
-    submitNewProjectBtn.addEventListener('click', () => {
-        submitNewProject();
-        //closeNewProjectForm();
-        //showProjectsOnScreen(allProjects);
-    });
+    submitNewProjectBtn.addEventListener('click', submitNewProject);
 }
 
 function closeNewProjectForm() {
     const allProjectsDiv = document.querySelector('#projects-div');
-    console.log(allProjectsDiv)
     const newProjectForm = document.querySelector("#new-project-form");
-    console.log(newProjectForm)
 
     allProjectsDiv.removeChild(newProjectForm);
 }
@@ -52,9 +46,17 @@ function showProjectsOnScreen(allProjects) {
     allProjectsDiv.innerHTML = "";
 
     allProjects.forEach(project => {
-        let currentProject = document.createElement("div");
-        currentProject.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${project}`
-        allProjectsDiv.appendChild(currentProject);
+        let currentProjectLink = document.createElement('a');
+        currentProjectLink.setAttribute('id', `project-${project}`);
+        currentProjectLink.setAttribute('href', '#');
+        currentProjectLink.classList.add('project-btn');
+
+        let currentProjectDiv = document.createElement("div");
+        currentProjectDiv.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${project}`
+        currentProjectDiv.classList.add('div-closed');
+
+        currentProjectLink.appendChild(currentProjectDiv);
+        allProjectsDiv.appendChild(currentProjectLink);
     })
 }
 

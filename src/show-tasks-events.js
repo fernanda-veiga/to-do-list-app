@@ -68,7 +68,6 @@ function addEventToTaskDiv(task, allTasks) {
     let index = Number(task.id.replace('task', ''));
 
     taskTitle.addEventListener('click', () =>  {
-        console.log(allTasks[index])
         generateTaskPopup(allTasks[index].title, allTasks[index].dueDate, allTasks[index].project, allTasks[index].priority)
 
         const closeTaskFormBtn = document.querySelector('#close-btn');
