@@ -33,7 +33,7 @@ function addEventToSubmitProjectBtn() {
 
     submitNewProjectBtn.addEventListener('click', () => {
         submitNewProject();
-        closeNewProjectForm();
+        //closeNewProjectForm();
         //showProjectsOnScreen(allProjects);
     });
 }
@@ -41,31 +41,21 @@ function addEventToSubmitProjectBtn() {
 function closeNewProjectForm() {
     const allProjectsDiv = document.querySelector('#projects-div');
     console.log(allProjectsDiv)
-    //const newProjectForm = document.querySelector("#new-project-form");
-    //console.log(newProjectForm)
+    const newProjectForm = document.querySelector("#new-project-form");
+    console.log(newProjectForm)
 
-    //allProjectsDiv.removeChild(newProjectForm);
+    allProjectsDiv.removeChild(newProjectForm);
 }
 
 function showProjectsOnScreen(allProjects) {
-    console.log('show')
     const allProjectsDiv = document.querySelector('#projects-div');
     allProjectsDiv.innerHTML = "";
-
-    //console.log(allProjects.splice(1))
 
     allProjects.forEach(project => {
         let currentProject = document.createElement("div");
         currentProject.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${project}`
         allProjectsDiv.appendChild(currentProject);
     })
-
-    /*let projectsToShow = allProjects.splice(1);
-    projectsToShow.forEach(project => {
-        let currentProject = document.createElement("div");
-        currentProject.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${project}`
-        allProjectsDiv.appendChild(currentProject);
-    })*/
 }
 
 export {generateFormToAddNewProject, showProjectsOnScreen}

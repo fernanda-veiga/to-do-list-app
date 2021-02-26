@@ -1,3 +1,5 @@
+import {generateProjectSelect} from './index'
+
 function openOrCloseLeftBar() {
     const leftBar = document.getElementById('left-bar');
     const mainContent = document.getElementById('main-content');
@@ -88,8 +90,8 @@ function generateFormInputFields(titleValue = '', dueDateValue = new Date(), pro
     taskDueDateInput.valueAsDate = dueDateValue;
 
     //Project
-    /*let taskProjectSelect = generateProjectSelect(projectValue);
-    taskProjectSelect.value = projectValue;*/
+    let taskProjectSelect = generateProjectSelect(projectValue);
+    taskProjectSelect.value = projectValue;
 
     //Priority
     let taskPrioritySelect = document.createElement('select');
@@ -111,7 +113,7 @@ function generateFormInputFields(titleValue = '', dueDateValue = new Date(), pro
     //Append child
     formContent.appendChild(taskTitleInput);
     formContent.appendChild(taskDueDateInput);
-    //formContent.appendChild(taskProjectSelect);
+    formContent.appendChild(taskProjectSelect);
     formContent.appendChild(taskPrioritySelect);
 
     return formContent;

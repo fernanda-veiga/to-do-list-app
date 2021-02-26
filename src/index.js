@@ -74,6 +74,23 @@ function submitNewProject() {
     showTasksAndProjectsAndUpdateStorage()
 }
 
+//Generate project select
+function generateProjectSelect(projectValue) {
+    let taskProjectSelect = document.createElement("select");
+    taskProjectSelect.setAttribute("id", "project");
+    taskProjectSelect.setAttribute("name", "project");
+    taskProjectSelect.value = projectValue;
+    
+    allProjects.forEach(project => {
+        let projectOption = document.createElement("option");
+        projectOption.setAttribute("value", `${project}`);
+        projectOption.textContent = `${project}`;
+        taskProjectSelect.appendChild(projectOption);
+    })
+
+    return taskProjectSelect;
+}
+
 //Add event listener to menu button
 addEventToMenuBtn();
 
@@ -84,4 +101,4 @@ addEventToAddTaskBtn();
 addEventToAddNewProjectBtn();
 
 
-export {submitNewTask, submitNewEdit, deleteTask, showTasksAndProjectsAndUpdateStorage, submitNewProject}
+export {submitNewTask, submitNewEdit, deleteTask, showTasksAndProjectsAndUpdateStorage, submitNewProject, generateProjectSelect}

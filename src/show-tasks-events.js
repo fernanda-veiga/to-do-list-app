@@ -104,8 +104,8 @@ function generateTaskPopupContent(titleValue, dueDateValue, projectValue, priori
     taskDueDate.innerHTML = `<i class="far fa-calendar"></i> &nbsp ${dueDateValue}`;
 
     //Project
-    /*let taskProjectSelect = generateProjectSelect(projectValue);
-    taskProjectSelect.value = projectValue;*/
+    let taskProject = document.createElement('div');
+    taskProject.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${projectValue}`;
 
     //Priority
     let taskPriority = document.createElement('div');
@@ -114,7 +114,7 @@ function generateTaskPopupContent(titleValue, dueDateValue, projectValue, priori
     //Append child
     taskDivContent.appendChild(taskTitle);
     taskDivContent.appendChild(taskDueDate);
-    //formContent.appendChild(taskProjectSelect);
+    taskDivContent.appendChild(taskProject);
     taskDivContent.appendChild(taskPriority);
 
     return taskDivContent;
