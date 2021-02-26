@@ -6,21 +6,33 @@ let lastFilter = 'Inbox';
 const inboxFilter = document.querySelector("#inbox-link");
 inboxFilter.addEventListener("click", () => {
     lastFilter = 'Inbox';
+    showButtonWhenClicked(inboxFilter);
     showTasksAndUpdateStorage();
 })
 
 const todayFilter = document.querySelector("#today-link");
 todayFilter.addEventListener("click", () => {
     lastFilter = 'Today'
+    showButtonWhenClicked(todayFilter);
     showTasksAndUpdateStorage();
 })
 
 const nextDaysFilter = document.querySelector("#next-days-link");
 nextDaysFilter.addEventListener("click", () => {
     lastFilter = 'NextDays'
-    console.log(lastFilter)
+    showButtonWhenClicked(nextDaysFilter);
     showTasksAndUpdateStorage();
 })
+
+function showButtonWhenClicked(button) {
+    let lastFilterClicked = document.querySelector('.div-open');
+    lastFilterClicked.classList.remove('div-open');
+    lastFilterClicked.classList.add('div-closed');
+
+    let currentFilter = button.querySelector('div');
+    currentFilter.classList.add('div-open');
+    currentFilter.classList.remove('div-closed');
+}
 
 function applyFilter(allTasks) {
     let allTasksFilteredIndexes = [];
