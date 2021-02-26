@@ -71,19 +71,6 @@ function showTasksOnScreen(allTasks) {
         if (allTasksFilteredIndexes.some(index => index === taskIndex) === false) {
             allTasksDiv.removeChild(task)
         }
-        //allTasksFilteredIndexes.forEach(index => {
-            //console.log(taskIndex)
-            //console.log(index)
-            //if (taskIndex === index) {
-                //console.log('yes')
-                //allTasksDiv.removeChild(task)
-            //}
-        //})
-        //console.log(allTasksFilteredIndexes.findIndex(allTasksShown.indexOf(task)))
-        //if (allTasksFilteredIndexes.find(allTasksShown.indexOf(task)) === -1) {
-            //allTasksDiv.removeChild(task);
-        //}
-
     })
     
 }

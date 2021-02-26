@@ -1,7 +1,9 @@
 import {addEventToMenuBtn, addEventToAddTaskBtn} from './main-buttons-events'
-import {checkIfThereIsLocalStorage, updateLocalStorage} from './local-storage'
+import {checkIfThereIsLocalStorageOnTasks, checkIfThereIsLocalStorageOnProjects, updateLocalStorage} from './local-storage'
 import {showTasksOnScreen} from './show-tasks-dom'
 import {isBefore, isToday} from 'date-fns'
+import {addEventToAddNewProjectBtn} from './projects-events'
+import {showProjectsOnScreen} from './projects-dom'
 
 //Factory function to create a new task object
 function addNewTask (title, dueDate, project = 'Inbox', priority) {
@@ -11,13 +13,16 @@ function addNewTask (title, dueDate, project = 'Inbox', priority) {
 
 //Initialize the page
 let allTasks = [];
-allTasks = checkIfThereIsLocalStorage(allTasks);
-showTasksAndUpdateStorage();
+let allProjects = ['Inbox'];
+allTasks = checkIfThereIsLocalStorageOnTasks(allTasks);
+allProjects = checkIfThereIsLocalStorageOnProjects(allProjects);
+showTasksAndProjectsAndUpdateStorage();
 
 
-function showTasksAndUpdateStorage() {
+function showTasksAndProjectsAndUpdateStorage() {
     showTasksOnScreen(allTasks);
-    updateLocalStorage(allTasks);
+    showProjectsOnScreen(allProjects);
+    updateLocalStorage(allTasks, allProjects);
     return;
 }
 
@@ -32,12 +37,12 @@ function submitNewTask() {
         
     allTasks.push(newTask);
     allTasks = sortAllTasksByDueDate(allTasks)
-    showTasksAndUpdateStorage();
+    showTasksAndProjectsAndUpdateStorage();
 }
 
 function deleteTask(index) {
     allTasks.splice(index, 1);
-    showTasksAndUpdateStorage();
+    showTasksAndProjectsAndUpdateStorage();
 }
 
 function submitNewEdit(index) {
@@ -47,7 +52,7 @@ function submitNewEdit(index) {
     //allTasks[index].project = document.querySelector("#project").value;
     allTasks[index].priority = document.querySelector("#priority").value;
     allTasks = sortAllTasksByDueDate(allTasks)
-    showTasksAndUpdateStorage();
+    showTasksAndProjectsAndUpdateStorage();
 }
 
 function sortAllTasksByDueDate(allTasks) {
@@ -58,6 +63,16 @@ function sortAllTasksByDueDate(allTasks) {
     return sortedTasks;
 }
 
+//Functions that update the AllProjects array
+function submitNewProject() {
+    const newProjectForm = document.querySelector("#new-project-form");
+    let newProjectInput = newProjectForm.querySelector("input");
+    console.log('test')
+
+    allProjects.push(newProjectInput.value);
+    console.log(allProjects)
+    showTasksAndProjectsAndUpdateStorage()
+}
 
 //Add event listener to menu button
 addEventToMenuBtn();
@@ -65,4 +80,8 @@ addEventToMenuBtn();
 //Add event listener to add task button
 addEventToAddTaskBtn();
 
-export {submitNewTask, submitNewEdit, deleteTask, showTasksAndUpdateStorage}
+//Add event listener to add new project button
+addEventToAddNewProjectBtn();
+
+
+export {submitNewTask, submitNewEdit, deleteTask, showTasksAndProjectsAndUpdateStorage, submitNewProject}
