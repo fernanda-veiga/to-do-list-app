@@ -120,6 +120,14 @@ body {
     background-color: #ffffff;
 }
 
+.div-open {
+    background-color: #ffffff;
+}
+
+.div-closed {
+    background: none;
+}
+
 /*Add project form*/
 #project-title {
     font-weight: 600;
