@@ -52,9 +52,11 @@ function showProjectsOnScreen(allProjects) {
         currentProjectLink.classList.add('project-btn');
 
         let currentProjectDiv = document.createElement("div");
-        currentProjectDiv.innerHTML = `<i class="far fa-folder"></i> &nbsp; ${project}`
+        currentProjectDiv.innerHTML = `<p><i class="far fa-folder"></i> &nbsp; ${project}</p>`
         currentProjectDiv.classList.add('div-closed');
-
+        currentProjectDiv.style.display = 'flex';
+        currentProjectDiv.style.justifyContent = 'space-between'
+        
         currentProjectLink.appendChild(currentProjectDiv);
         allProjectsDiv.appendChild(currentProjectLink);
     })

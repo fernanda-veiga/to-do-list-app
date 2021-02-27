@@ -23,16 +23,9 @@ showProjectsOnScreen(allProjects)
 function showTasksAndProjectsAndUpdateStorage() {
     console.log('bye')
     showTasksOnScreen(allTasks);
-    //showProjectsOnScreen(allProjects);
     updateLocalStorage(allTasks, allProjects);
     return;
 }
-
-/*function showOnlyTasks() {
-    showTasksOnScreen(allTasks);
-    updateLocalStorage(allTasks, allProjects);
-    return;
-}*/
 
 //Functions that update the allTasks array
 function submitNewTask() {
@@ -76,6 +69,7 @@ function submitNewProject() {
     let newProjectInput = newProjectForm.querySelector("input");
 
     allProjects.push(newProjectInput.value);
+    sortAllProjectsByName();
     showProjectsOnScreen(allProjects)
     showTasksAndProjectsAndUpdateStorage()
 }
@@ -95,6 +89,14 @@ function generateProjectSelect(projectValue) {
     })
 
     return taskProjectSelect;
+}
+
+function sortAllProjectsByName() {
+    allProjects = allProjects.sort((a, b) => {
+        if (a < b) {return -1;}
+        else if (a > b) {return 1;}
+        else {return 0;}
+    })
 }
 
 //Add event listener to menu button
